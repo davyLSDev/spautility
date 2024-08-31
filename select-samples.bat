@@ -8,7 +8,6 @@ rem  this is a general purpose conversion batch file
 rem  several processes are not needed as of now but avaiable for easy additional use
 rem  skip down the step 1 for the working part of this batch file
 
-
 rem ***********************************************************
 rem set the location of saxon in following line
 SET saxon="c:\Program Files\Saxonica\SaxonHE10.8N\bin\Transform.exe"
@@ -37,8 +36,6 @@ if  *%1*==*\help* goto :instructions
 if  *%1*==*?* goto :instructions
 if  *%1*==*-?* goto :instructions
 
-
-
 rem ***********************************************************
 rem set the location of tidy.exe in following line
 SET tidy="programs\tidy.exe"
@@ -60,7 +57,7 @@ rem the following checks that you have included at least one parameter
 rem      if *%1*==** goto :instructions
 rem ***********************************************************
 
-goto :step1		
+goto :step1
 
 rem the following allows you to skip step1
 rem you will go to %2
@@ -76,19 +73,19 @@ rem and then invoke Saxon as
 rem java -jar saxon8.jar source.xml style.xsl x=17
 rem and then access the variable $x in any XPath expression.
 rem (Or similarly in XSLT 1.0, but then the "as" and "required" attributes are not available).
-rem 
+rem
 rem Michael Kay
-rem http://www.saxonica.com/ 
+rem http://www.saxonica.com/
 
 echo .
-echo . start 
+echo . start
 echo .
 
 :start
 :tidy
 
 echo ------------------------------------------------
-echo . create %1.tidy from %1.htm 
+echo . create %1.tidy from %1.htm
 rem ***********************************************************
 if not exist working\%1.htm goto :missingInputFileForTidy
 rem  ***********************************************************
@@ -127,18 +124,17 @@ echo . stepE   sense-number			%1.stepE.sfm  		%date% - %time% >> %1.history.txt
 echo ------------------------------------------------
 echo . stepE - sense-number
 echo ------------------------------------------------
-echo . output: working\%1.stepE.sfm 
+echo . output: working\%1.stepE.sfm
 echo . input:  working\%1.stepD.sfm
 echo . cct:    BUMstepE.cct
 call %ccw% -n -q -t programs\conversion\BUMstepE.cct -o working\%1.stepE.sfm working\%1.stepD.sfm
 echo ------------------------------------------------
 
-
 goto end
 :tidy-only
 
 echo ------------------------------------------------
-echo . create %1.tidy from %1.htm  	
+echo . create %1.tidy from %1.htm
 rem ***********************************************************
 if not exist working\%1.htm goto :missingInputFileForTidy
 rem  ***********************************************************
@@ -150,16 +146,12 @@ echo . output working\%1.tidy
 echo ------------------------------------------------
 goto end
 
-
-
-
-
 :instructions
 
 echo . ------------
 echo . Instructions
 echo . ------------
-echo . 
+echo .
 echo . Just run the batch file.  It is assumed that you have placed the input file in
 echo .   %input%
 echo . The output file can be found at
@@ -175,13 +167,10 @@ echo . ***********************************************************
 
 goto :end
 
-
-
-
 :missingXSL
 echo .
 echo . ---------------------------
-echo . xsl file not found at 
+echo . xsl file not found at
 echo . programs\conversion\toss-out-some-links.xsl
 echo . ---------------------------
 goto :end
@@ -189,7 +178,7 @@ goto :end
 :missingCC
 echo .
 echo . ---------------------------
-echo . cc program file not found at 
+echo . cc program file not found at
 echo . %ccw%
 echo . ---------------------------
 goto :end
@@ -197,10 +186,9 @@ goto :end
 :missingTidy
 echo .
 echo . ---------------------------
-echo . Tidy.exe program file not found in current folder  
+echo . Tidy.exe program file not found in current folder
 echo . ---------------------------
 goto :end
-
 
 :missingInputFile
 echo . ---------------------------
@@ -231,7 +219,7 @@ echo . Make the change at the top of this batch file at SET Saxon ......
 echo .
 echo . If you don't have Saxon on your computer you can download a free verson from
 echo . Saxonica
-echo . https://github.com/Saxonica/Saxon-HE/tree/main/10/Dotnet 
+echo . https://github.com/Saxonica/Saxon-HE/tree/main/10/Dotnet
 echo . the .NET Home Edition  HE of Saxon is the free version
 echo . as of 2023-02-01 the download is:
 echo . https://github.com/Saxonica/Saxon-HE/blob/main/10/Dotnet/SaxonHE10-8N-setup.exe
@@ -242,7 +230,6 @@ echo . ***********************************************************
 
 goto :end
 
-
 :end
 echo .   end step 1  toss out unneeded links  	  		%date% - %time% >> toss-out-some-links.history.txt
 echo .
@@ -250,4 +237,3 @@ echo . -------------------------------------------------------------------------
 echo . output file is %output%
 echo . --------------------------------------------------------------------------------------------------------------- >> toss-out-some-links.history.txt
 echo .
-

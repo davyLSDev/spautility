@@ -13,7 +13,7 @@
 
 <!-- copy and make sample -->
 
-<xsl:stylesheet 
+<xsl:stylesheet
     xmlns:jaa="http://www.w3.org/2005/Atom"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -22,10 +22,9 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xpath-default-namespace="http://www.w3.org/1999/xhtml"
     version="2.0">
-    
+
     <xsl:output indent="yes" omit-xml-declaration="yes" method="xml" />
-    
-    
+
     <!-- copy only 001, 002, 003, 105b, 235 -->
     <xsl:template match="jaa:entry[starts-with(jaa:title,'001')]">
         <xsl:copy-of select="."/>
@@ -50,8 +49,6 @@
     <xsl:template match="jaa:entry">
         <!-- toss out -->
     </xsl:template>
-    
-
 
     <!-- identity transform -->
     <xsl:template match="@* | node()">
@@ -59,5 +56,5 @@
             <xsl:apply-templates select="@* | node()"/>
         </xsl:copy>
     </xsl:template>
-    
+
 </xsl:stylesheet>

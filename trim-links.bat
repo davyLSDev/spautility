@@ -2,7 +2,7 @@
 rem trim-links.bat
 rem trims out the url links that Story Producer does not need
 rem jaa 2022-08-24
-rem bdw 2023-04-17 
+rem bdw 2023-04-17
 
 echo .
 
@@ -19,7 +19,6 @@ if  *%1*==*-help* goto :instructions
 if  *%1*==*\help* goto :instructions
 if  *%1*==*?* goto :instructions
 if  *%1*==*-?* goto :instructions
-
 
 rem ***********************************************************
 rem assume the location of input in following line
@@ -51,9 +50,7 @@ rem the followiing checks that you have Saxon installed
 if not exist %saxon% goto :missingSaxon
 rem  ***********************************************************
 
-
-goto :step1		
-
+goto :step1
 
 rem Can you pass a paramter to Saxon?
 rem Sure. Declare
@@ -63,16 +60,15 @@ rem and then invoke Saxon as
 rem java -jar saxon8.jar source.xml style.xsl x=17
 rem and then access the variable $x in any XPath expression.
 rem (Or similarly in XSLT 1.0, but then the "as" and "required" attributes are not available).
-rem 
+rem
 rem Michael Kay
-rem http://www.saxonica.com/ 
-
+rem http://www.saxonica.com/
 
 
 :step1
 
 rem ***********************************************************
-rem  ***********************************************************
+rem  **********************************************************
 
 echo . start step 1  trim out unneeded links  	  		%date% - %time% >> %history%
 echo ------------------------------------------------
@@ -85,19 +81,14 @@ echo . end step1
 
 goto end
 
-
-
-
-
-
 :instructions
 
 echo . ------------
 echo . Instructions
 echo . ------------
-echo . 
+echo .
 echo . To run this batch file you must provide the output folder as parameter 1.
-echo .   
+echo .
 echo . It is assumed that you have placed the input file in
 echo .   %input%
 echo . The output file can be found at
@@ -144,7 +135,6 @@ echo . There is also a Java version but you will need to change command to run i
 echo . ***********************************************************
 goto :end
 
-
 :end
 echo .   end step 1  trim unneeded links  	  		%date% - %time% >> %history%
 echo .
@@ -152,4 +142,3 @@ echo . -------------------------------------------------------------------------
 echo . output file is %output%
 echo . --------------------------------------------------------------------------------------------------------------- >> %history%
 echo .
-

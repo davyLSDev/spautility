@@ -31,7 +31,7 @@ download_opds () {
 select_samples () {
   # sudo apt install tidy
   # install saxon, http://www.saxonica.com/
-  # there are a few other programs expected as well: cc\Ccw32.exe aka ccw
+  # there are a few other programs expected as well: cc\Ccw32.exe aka ccwInitial commit of bash script
   # and some files: \programs\conversion\BUMstepE.cct,
   # programs\conversion\toss-out-some-links.xsl,
   # programs\conversion\make-sample.xsl
