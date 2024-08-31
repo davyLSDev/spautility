@@ -88,7 +88,7 @@ echo ------------------------------------------------
 echo . create %1.tidy from %1.htm
 rem ***********************************************************
 if not exist working\%1.htm goto :missingInputFileForTidy
-rem  ***********************************************************
+rem  **********************************************************
 echo . --------------------------------------------------------------------------------------------------------------- > %1.history.txt
 echo . process					output				date		 time >> %1.history.txt
 echo . --------------------------------------------------------------------------------------------------------------- >> %1.history.txt
@@ -129,6 +129,7 @@ echo . input:  working\%1.stepD.sfm
 echo . cct:    BUMstepE.cct
 call %ccw% -n -q -t programs\conversion\BUMstepE.cct -o working\%1.stepE.sfm working\%1.stepD.sfm
 echo ------------------------------------------------
+
 
 goto end
 :tidy-only
@@ -219,7 +220,7 @@ echo . Make the change at the top of this batch file at SET Saxon ......
 echo .
 echo . If you don't have Saxon on your computer you can download a free verson from
 echo . Saxonica
-echo . https://github.com/Saxonica/Saxon-HE/tree/main/10/Dotnet
+echo . https://github.com/Saxonica/Saxon-HE/tree/main/10/Dotnet 
 echo . the .NET Home Edition  HE of Saxon is the free version
 echo . as of 2023-02-01 the download is:
 echo . https://github.com/Saxonica/Saxon-HE/blob/main/10/Dotnet/SaxonHE10-8N-setup.exe

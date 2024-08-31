@@ -9,13 +9,7 @@
 #=====================================================
 
 # ====================================================
-# functions - likely I don't need all these as modules!
-
-# Set today
-set_today () {
-  today=`date '+%Y-%m-%d'`
-  echo "The date today is: " $today
-}
+# functions
 
 # Download the OPDS
 download_opds () {
@@ -27,27 +21,25 @@ download_opds () {
   curl "https://api.bloomlibrary.org/v1/opds?minimalnavlinks=true&tag=list:Bible/SPApp-Templates&key=spapp.downloads@gmail.com:qJxUzLBdI0" > $catalog_file
 }
 
-# Select the samples used for the alpha build
-select_samples () {
-  # sudo apt install tidy
-  # install saxon, http://www.saxonica.com/
-  # there are a few other programs expected as well: cc\Ccw32.exe aka ccwInitial commit of bash script
-  # and some files: \programs\conversion\BUMstepE.cct,
-  # programs\conversion\toss-out-some-links.xsl,
-  # programs\conversion\make-sample.xsl
-  echo "This is the bit that selects the samples used for alpha builds"
-}
-
 # Trim the links
 trim_links () {
-  #
-  echo "This is the bit that trims the links"
+  file_out=$1
+  file_in=$2
+  xsl_file=$3
+  # %saxon% -o:%output% -s:%input%  -xsl:%xsl% -versionmsg:off
+  transform -o:$file_out -s:$file_in  -xsl:$xsl_file -versionmsg:off
 }
 
 #=========================================================
-set_today
+xsl="programs/conversion/trim-links.xsl"
+today=`date '+%Y-%m-%d'`
 download_opds
-select_samples
-trim_links
+[[ -d $today ]] || mkdir $today
+trim_links "$today/bl_catalog.xml" "download/bl_catalog_opds.xml" $xsl
 
-echo "DONE"
+# missing step from a-run.bat is > trim-links "download/bl_catalog_feat_opds.xml" $today "bl_catalog_feat.xml"
+# but you need also to download the OPDS for that also, if it is actually needed
+
+# missing step, but also missing from a-run.bat > create the sample files, this is a TODO in a-run.bat
+
+echo "DONE processing the xml files"

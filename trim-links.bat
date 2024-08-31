@@ -34,7 +34,7 @@ rem  ***********************************************************
 
 rem ***********************************************************
 rem assume the location of xsl in following line
-SET xsl="programs\conversion\trim-links.xsl"
+SET xsl="programs\conversion\trim-links.xsl"xsl="programs\conversion\trim-links.xsl"
 if not exist %xsl% goto :missingXSL
 rem  ***********************************************************
 
