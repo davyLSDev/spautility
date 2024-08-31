@@ -27,7 +27,6 @@
 
     <!-- comments are added to the text like this -->
 
-
  <!-- keep links with image/png as type -->
     <xsl:template match="jaa:link[@type='image/png']">
  <xsl:copy-of select="."/>
